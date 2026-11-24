@@ -18,10 +18,10 @@ app = FastAPI()
 @app.get("/cowsay", response_class=PlainTextResponse)
 def cow_answer(input_: str):
     greetings_variants = get_greetings()
-    
+
     greetings_choosen = random.choice(greetings_variants)
     answer = cowsay(greetings_choosen+' '+input_) + '\n'
-    url = 'http://localhost:4649/count'
+    url = 'http://counter:1602/count'
     ret = requests.get(url)
     print(ret.json())
     return answer
